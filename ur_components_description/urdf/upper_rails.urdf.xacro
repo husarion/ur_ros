@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <xacro:macro name="upper_rails"
+              params="parent_link xyz rpy">    
+  
+    <link name="upper_rails_link">
+      <collision>
+        <geometry>
+          <mesh filename="file://$(find ur_components_description)/meshes/upper_rails.stl" scale="0.01 0.01 0.01" />
+        </geometry>
+        <origin xyz="0.0 0.0 0.0" rpy=" ${pi/2} 0.0 ${pi/2}" />
+      </collision>
+
+      <visual>
+        <geometry>
+          <mesh filename="file://$(find ur_components_description)/meshes/upper_rails.stl" scale="0.01 0.01 0.01" />
+        </geometry>
+        <origin xyz="0.0 0.0 0.0" rpy=" ${pi/2} 0.0 ${pi/2}" />
+        <material name="Black" />
+      </visual> 
+
+      <inertial>
+        <mass value="0.0000001" />
+        <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0" />
+      </inertial>
+    </link> 
+
+    <joint name="${parent_link}_to_upper_rails_link_joint" type="fixed">
+      <origin xyz="${xyz}" rpy="${rpy}" />
+      <parent link="${parent_link}" />
+      <child link="upper_rails_link" />
+    </joint>
+
+    <gazebo reference="upper_rails_link">
+      <material>Gazebo/Black</material>
+    </gazebo>
+
+  </xacro:macro>
+</robot>

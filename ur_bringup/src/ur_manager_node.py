@@ -45,7 +45,7 @@ class URManagerNode:
 
         self._ur_start_sequence()
 
-    def _ur_start_sequence(self):
+    def _ur_start_sequence(self) -> None:
 
         rospy.loginfo(f'[{rospy.get_name()}] Calling quit service')
         while not self._call_trigger_service(self._quit_service) and not rospy.is_shutdown():
@@ -80,9 +80,7 @@ class URManagerNode:
 
         rospy.loginfo(f'[{rospy.get_name()}] Calling get_robot_mode service')
         mode = 0
-        while not mode == 5 and not rospy.is_shutdown():
-            if mode == 7:
-                break
+        while mode != 5 and mode != 7 and not rospy.is_shutdown():
             try:
                 self._get_robot_mode_service.wait_for_service(5.0)
                 res = self._get_robot_mode_service.call()
@@ -127,12 +125,14 @@ class URManagerNode:
                 req.filename = 'husarion_ext_control.urp'
                 res = self._load_program_service.call(req)
                 rospy.loginfo(
-                    f'[{rospy.get_name()}] called {self._get_robot_mode_service.resolved_name} service. Response: {res.answer}'
+                    f'[{rospy.get_name()}] called {self._load_program_service.resolved_name} service. Response: {res.answer}'
                 )
                 break
             except (rospy.exceptions.ROSException, rospy.service.ServiceException) as err:
                 rospy.logerr(f'[{rospy.get_name()}] {err}')
             rospy.sleep(1.0)
+
+        rospy.sleep(10.0)
 
         rospy.loginfo(f'[{rospy.get_name()}] Calling play service')
         self._call_trigger_service(self._play_service)

@@ -6,7 +6,7 @@ import rospy
 
 from std_srvs.srv import Trigger
 
-from ur_dashboard_msgs.srv import GetRobotMode, IsInRemoteControl, Load, LoadRequest
+from ur_dashboard_msgs.srv import GetRobotMode, Load, LoadRequest, IsInRemoteControl
 
 
 class URManagerNode:

@@ -15,4 +15,7 @@
 
   <buildtool_depend>catkin</buildtool_depend>
 
+  <depend>ur_bringup</depend>
+  <depend>ur_components_description</depend>
+  
 </package>

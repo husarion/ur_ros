@@ -2,9 +2,10 @@
   <arg name="robot_ip" default="10.15.20.4" />
   <arg name="tf_prefix" default="panther_ur3_" />
   <arg name="kinematics_config" default="$(find ur_bringup)/config/ur3_calibration.yaml" />
-  <arg name="rviz_config" default="$(find ur_bringup)/config/rviz_config.rviz" />
   <arg name="headless_mode" default="true" />
   <arg name="use_rviz" default="false" />
+  <arg name="rviz_config" default="$(find ur_bringup)/config/rviz_config.rviz" />
+  
   
   <include file="$(find ur_robot_driver)/launch/ur3_bringup.launch">
     <arg name="robot_ip" value="$(arg robot_ip)" />

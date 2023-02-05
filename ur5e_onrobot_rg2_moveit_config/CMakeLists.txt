@@ -7,5 +7,8 @@ find_package(catkin REQUIRED)
 catkin_package()
 
 include_directories(
+  config
+  launch
+  urdf
   ${catkin_INCLUDE_DIRS}
 )

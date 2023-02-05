@@ -10,4 +10,4 @@ repositories:
   panther_ros:
     type: git
     url: https://github.com/husarion/panther_ros.git
-    version: add-ros-control
+    version: ros1

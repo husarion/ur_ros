@@ -15,7 +15,11 @@
     wheel_config_path="$(arg wheel_config_path)" 
     use_ros_control="True" />
   <xacro:universal_robot.ur5e_robot prefix="panther_ur5e_" />
-  <xacro:onrobot.onrobot_rg2 parent_link="panther_ur5e_tool0" xyz="0.0 0.0 0.02" rpy="${-pi/2} ${-pi/2} 0.0" />
+  <xacro:onrobot.onrobot_rg2 
+    parent_link="panther_ur5e_tool0" 
+    xyz="0.0 0.0 0.02" 
+    rpy="${-pi/2} ${-pi/2} 0.0"
+    use_ros_control="False" />
 
   <joint name="base_link_to_ur5e_link_joint" type="fixed">
     <origin xyz="-0.095 0.0975 0.375" rpy="0.0 0.0 ${pi/2}" />

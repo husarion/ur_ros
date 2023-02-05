@@ -16,6 +16,8 @@
 
   <include file="$(find ur3_moveit_config)/launch/move_group.launch" />
   
+  <node name="ur_manager_node" pkg="ur_manager" type="ur_manager_node.py" output="screen" />
+  
   <node if="$(arg use_rviz)" name="rviz" pkg="rviz" type="rviz" respawn="false" output="screen" args="-d $(arg rviz_config)" />
 
 </launch>

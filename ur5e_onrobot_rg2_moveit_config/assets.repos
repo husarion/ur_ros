@@ -3,5 +3,8 @@ repositories:
     type: git
     url: https://github.com/roboticsgroup/roboticsgroup_gazebo_plugins.git
     version: 509a32ea6accc58d03cebd9d670ae44635adc924
-
+  ur_onrobot_rg2_ros:
+    type: git
+    url: https://github.com/husarion/ur_onrobot_rg2_ros
+    version: add-rg2-gripp
 

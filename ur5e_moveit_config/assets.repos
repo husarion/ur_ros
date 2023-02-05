@@ -1,0 +1,9 @@
+repositories:
+  realsense-ros:
+    type: git
+    url: https://github.com/IntelRealSense/realsense-ros.git
+    version: e4938bbbfd7b285fe71f81fe69cebcc76dbf72fc
+  ros_componenst_description:
+    type: git
+    url: https://github.com/husarion/ros_components_description.git
+    version: ros1

@@ -1,0 +1,27 @@
+<launch>
+  <arg name="rviz_config" default="$(find ur_bringup)/config/rviz_config.rviz" />
+  <arg name="use_rviz" default="false" />
+  <arg name="sim" default="true" />
+  <arg name="controllers" default="joint_state_controller pos_joint_traj_controller" />
+  <arg name="stopped_controllers" default="joint_group_pos_controller" />
+
+  <include file="$(find ur3_moveit_config)/launch/move_group.launch">
+    <arg name="sim" value="$(arg sim)" />
+  </include>
+
+  <include file="$(find ur_gazebo)/launch/ur3_bringup.launch">
+    <arg name="robot_description_file" value="$(find ur3_moveit_config)/launch/load_ur3.launch" />
+    <arg name="controller_config_file" value="$(find ur_bringup)/config/ur3_controllers.yaml" />
+    <arg name="controllers" value="$(arg controllers)" />
+    <arg name="stopped_controllers" value="$(arg stopped_controllers)" />
+  </include>
+
+  <rosparam file="$(find panther_gazebo)/config/panther_ros_controler.yaml" command="load" />
+  <node name="panther_controller_manager" pkg="controller_manager" type="spawner"
+    respawn="false" output="screen" args="panther_base_controller" />
+
+  <node if="$(arg use_rviz)" name="rviz" pkg="rviz" type="rviz" respawn="false" output="screen"
+    args="-d $(arg rviz_config)" />
+
+</launch>
+  

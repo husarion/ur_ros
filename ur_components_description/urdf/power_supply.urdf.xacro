@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <xacro:macro name="power_supply"
+               params="parent_link xyz rpy">
+
+    <link name="power_supply_link">
+      <collision>
+        <origin xyz="0.0 0.09 0.15" rpy="${-pi/2} 0.0 ${pi}" />
+        <geometry>
+          <mesh filename="file://$(find ur_components_description)/meshes/power_supply.stl" scale="0.011 0.011 0.011" />
+        </geometry>
+      </collision>
+  
+      <visual>
+        <origin xyz="0.0 0.09 0.15" rpy="${-pi/2} 0.0 ${pi}" />
+        <geometry>
+          <mesh filename="file://$(find ur_components_description)/meshes/power_supply.dae" scale="0.01 0.01 0.01" />
+        </geometry>
+      </visual>
+  
+      <inertial>
+        <mass value="0.59" />
+        <inertia ixx="0.003964" ixy="0.0" ixz="0.0" iyy="0.0003964" iyz="0.0" izz="0.0004177" />
+        <origin xyz="0.045 0.0 0.0058" rpy="0.0 0.0 0.0" />
+      </inertial>
+    </link>
+
+    <joint name="${parent_link}_to_power_supply_link_joint" type="fixed">
+      <origin xyz="${xyz}" rpy="${rpy}" />
+      <parent link="${parent_link}" />
+      <child link="power_supply_link" />
+    </joint>
+
+  </xacro:macro>
+</robot>

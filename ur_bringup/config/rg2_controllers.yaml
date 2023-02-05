@@ -1,0 +1,4 @@
+gripper_joint_position:
+  type: effort_controllers/JointPositionController
+  joint: rg2_gripper_joint
+  pid: {p: 5.0, i: 0.0, d: 0.0}

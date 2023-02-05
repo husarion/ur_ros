@@ -1,0 +1,28 @@
+<?xml version='1.0'?>
+
+<robot name="panther_ur3" xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <xacro:arg name="use_gpu" default="false" />
+  <xacro:arg name="dual_bat" default="false" />
+  <xacro:arg name="wheel_config_path" default="$(find panther_description)/config/WH01.yaml" />
+
+  <!-- Robot -->
+  <xacro:include filename="$(find panther_description)/urdf/panther_macro.urdf.xacro" ns="husarion" />
+  <xacro:include filename="$(find ur_description)/urdf/inc/ur3_macro.xacro" ns="universal_robot"/>
+
+  <xacro:husarion.panther_robot dual_bat="$(arg dual_bat)" wheel_config_path="$(arg wheel_config_path)" />
+  <xacro:universal_robot.ur3_robot prefix="panther_ur3_" />
+
+  <joint name="base_link_to_ur3_link_joint" type="fixed">
+    <origin xyz="-0.095 0.0975 0.375" rpy="0.0 0.0 ${pi/2}" />
+    <parent link="base_link" />
+    <child link="panther_ur3_base_link" />
+  </joint>
+
+  <!-- Components -->
+  <xacro:include filename="$(find panther_description)/urdf/components/external_antenna.urdf.xacro" ns="antena" />
+  <xacro:include filename="$(find ur_components_description)/urdf/upper_rails.urdf.xacro" ns="rails" />
+
+  <xacro:antena.external_antenna parent_link="base_link" xyz="0.18 0.15 0.377" rpy="0.0 0.0 ${pi}" />
+  <xacro:rails.upper_rails parent_link="base_link" xyz="0.0 0.0 0.334" rpy="0.0 ${-pi/2} 0.0" />
+
+</robot>

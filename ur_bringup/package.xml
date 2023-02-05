@@ -15,7 +15,11 @@
 
   <buildtool_depend>catkin</buildtool_depend>
 
+  <depend>iputils-ping</depend>
+  <depend>rospy</depend>
+  <depend>std_srvs</depend>
   <depend>ur_calibration</depend>
+  <depend>ur_dashboard_msgs</depend>
   <depend>ur_robot_driver</depend>
   <depend>ur5e_moveit_config</depend>
 

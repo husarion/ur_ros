@@ -6,5 +6,5 @@ repositories:
   ur_onrobot_rg2_ros:
     type: git
     url: https://github.com/husarion/ur_onrobot_rg2_ros
-    version: add-rg2-gripp
+    version: main
 

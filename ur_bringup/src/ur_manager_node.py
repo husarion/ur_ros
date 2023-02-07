@@ -110,7 +110,7 @@ class URManagerNode:
             rospy.logwarn(f'[{rospy.get_name()}] Retrying')
             rospy.sleep(1.0)
         rospy.loginfo(f'[{rospy.get_name()}] Calling unlock_protective_stop service')
-        rospy.sleep(5.0)
+        rospy.sleep(10.0)
         while (
             not self._call_trigger_service(self._unlock_protective_stop_service)
             and not rospy.is_shutdown()

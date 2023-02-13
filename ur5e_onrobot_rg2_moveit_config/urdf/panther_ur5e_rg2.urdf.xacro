@@ -8,30 +8,52 @@
   <!-- Robot -->
   <xacro:include filename="$(find panther_description)/urdf/panther_macro.urdf.xacro" ns="husarion" />
   <xacro:include filename="$(find ur_description)/urdf/inc/ur5e_macro.xacro" ns="universal_robot"/>
-  <xacro:include filename="$(find onrobot_rg2_description)/urdf/onrobot_quick_changer.urdf.xacro" ns="changer" />
+  <xacro:include filename="$(find ur_components_description)/urdf/mounting_plate.urdf.xacro" ns="mounting_plate" />
   <xacro:include filename="$(find onrobot_rg2_description)/urdf/onrobot_rg2.urdf.xacro" ns="gripper" />
-  
+  <xacro:include filename="$(find onrobot_rg2_description)/urdf/onrobot_quick_changer.urdf.xacro" ns="changer" />
+  <xacro:include filename="$(find ur_components_description)/urdf/upper_rails.urdf.xacro" ns="rails" />
+
   <xacro:husarion.panther_robot 
     dual_bat="$(arg dual_bat)" 
     wheel_config_path="$(arg wheel_config_path)" 
     use_ros_control="True" />
+  <xacro:rails.upper_rails 
+      parent_link="cover_link" 
+      xyz="0.0 0.0 -0.02" 
+      rpy="0.0 0.0 0.0" />
+  <xacro:mounting_plate.mounting_plate 
+    parent_link="upper_rails_link"
+    xyz="0.085 0.0975 0.05"
+    rpy="0.0 0.0 0.0" />
+
+  <joint name="ur_mounting_plate_to_ur5e_link_joint" type="fixed">
+    <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 ${pi/2}" />
+    <parent link="ur_mounting_plate_link" />
+    <child link="panther_ur5e_base_link" />
+  </joint>
+
   <xacro:universal_robot.ur5e_robot prefix="panther_ur5e_" />
-  <xacro:changer.onrobot_quick_changer parent_link="panther_ur5e_tool0" xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
+  <xacro:changer.onrobot_quick_changer 
+    parent_link="panther_ur5e_tool0" 
+    xyz="0.0 0.0 0.0" 
+    rpy="0.0 0.0 0.0" />
   <xacro:gripper.onrobot_rg2 
     parent_link="quick_changer_link" 
     xyz="0.0 0.0 0.015" 
     rpy="${-pi/2} ${-pi/2} 0.0"
     use_ros_control="False" />
 
-  <joint name="base_link_to_ur5e_link_joint" type="fixed">
-    <origin xyz="-0.095 0.0975 0.375" rpy="0.0 0.0 ${pi/2}" />
-    <parent link="base_link" />
-    <child link="panther_ur5e_base_link" />
-  </joint>
-
   <!-- Components -->
-  <xacro:include filename="$(find ur_components_description)/urdf/upper_rails.urdf.xacro" ns="rails" />
+  <xacro:include filename="$(find ur_components_description)/urdf/zed2i.urdf.xacro" ns="zed" />
+  <xacro:include filename="$(find panther_description)/urdf/components/external_antenna.urdf.xacro" ns="antena" />
 
-  <xacro:rails.upper_rails parent_link="base_link" xyz="0.0 0.0 0.334" rpy="0.0 ${-pi/2} 0.0" />
+  <xacro:zed.zed2i_camera 
+    parent_link="cover_link" 
+    xyz="0.19 -0.1 0.05" 
+    rpy="0.0 0.0 0.0" />
+  <xacro:antena.external_antenna 
+    parent_link="cover_link" 
+    xyz="0.18 -0.15 0.0" 
+    rpy="0.0 0.0 ${pi}" />
 
 </robot>

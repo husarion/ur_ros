@@ -1,0 +1,95 @@
+<?xml version="1.0"?>
+
+<robot xmlns:xacro="http://wiki.ros.org/xacro">
+  <xacro:macro name="zed2i_camera" params="parent_link xyz rpy">
+
+    <link name="zed2i_base_link" />
+
+    <joint name="zed2i_base_joint" type="fixed">
+      <origin xyz="${xyz}" rpy="${rpy}" />
+      <parent link="${parent_link}" />
+      <child link="zed2i_base_link" />
+    </joint>
+
+    <link name="zed2i_camera_center">
+      <collision>
+        <geometry>
+          <mesh filename="file://$(find ur_components_description)/meshes/zed2i.stl" />
+        </geometry>
+      </collision>
+
+      <visual>
+        <geometry>
+          <mesh filename="file://$(find ur_components_description)/meshes/zed2i.dae" />
+        </geometry>
+      </visual>
+    </link>
+
+    <joint name="zed2i_camera_center_joint" type="fixed">
+      <parent link="zed2i_base_link" />
+      <child link="zed2i_camera_center" />
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
+    </joint>
+
+    <link name="zed2i_left_camera_frame" />
+    <joint name="zed2i_left_camera_joint" type="fixed">
+      <parent link="zed2i_camera_center" />
+      <child link="zed2i_left_camera_frame" />
+      <origin xyz="0.0 0.06 0.0" rpy="0.0 0.0 0.0" />
+    </joint>
+
+    <link name="zed2i_left_camera_optical_frame" />
+    <joint name="zed2i_left_camera_optical_joint" type="fixed">
+      <origin xyz="-0.01 0.0 0.0" rpy="-${pi/2} 0.0 -${pi/2}" />
+      <parent link="zed2i_left_camera_frame" />
+      <child link="zed2i_left_camera_optical_frame" />
+    </joint>
+
+    <link name="zed2i_right_camera_frame" />
+    <joint name="zed2i_right_camera_joint" type="fixed">
+      <parent link="zed2i_camera_center" />
+      <child link="zed2i_right_camera_frame" />
+      <origin xyz="0.0 -0.06 0.0" rpy="0.0 0.0 0.0" />
+    </joint>
+
+    <link name="zed2i_right_camera_optical_frame" />
+    <joint name="zed2i_right_camera_optical_joint" type="fixed">
+      <origin xyz="-0.01 0 0" rpy="-${pi/2} 0.0 -${pi/2}" />
+      <parent link="zed2i_right_camera_frame" />
+      <child link="zed2i_right_camera_optical_frame" />
+    </joint>
+
+    <link name="zed2i_mag_link" />
+
+    <joint name="zed2i_mag_joint" type="fixed">
+      <parent link="zed2i_camera_center" />
+      <child link="zed2i_mag_link" />
+      <origin xyz="0 0 0" rpy="0 0 0" />
+    </joint>
+
+    <link name="zed2i_baro_link" />
+
+    <joint name="zed2i_baro_joint" type="fixed">
+      <parent link="zed2i_camera_center" />
+      <child link="zed2i_baro_link" />
+      <origin xyz="0 0 0" rpy="0 0 0" />
+    </joint>
+
+    <link name="zed2i_temp_left_link" />
+
+    <joint name="zed2i_temp_left_joint" type="fixed">
+      <parent link="zed2i_left_camera_frame" />
+      <child link="zed2i_temp_left_link" />
+      <origin xyz="0 0 0" rpy="0 0 0" />
+    </joint>
+
+    <link name="zed2i_temp_right_link" />
+
+    <joint name="zed2i_temp_right_joint" type="fixed">
+      <parent link="zed2i_right_camera_frame" />
+      <child link="zed2i_temp_right_link" />
+      <origin xyz="0 0 0" rpy="0 0 0" />
+    </joint>
+
+  </xacro:macro>
+</robot>

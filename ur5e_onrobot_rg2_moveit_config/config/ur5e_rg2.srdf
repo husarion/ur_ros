@@ -50,28 +50,46 @@
     <passive_joint name="rl_wheel_joint"/>
     <passive_joint name="rr_wheel_joint"/>
     <!--DISABLE COLLISIONS: By default it is assumed that any link of the robot could potentially come into collision with any other link in the robot. This tag disables collision checking between a specified pair of links. -->
+    <disable_collisions link1="body_link" link2="external_antenna_link" reason="Adjacent"/>
     <disable_collisions link1="body_link" link2="fl_wheel_link" reason="Adjacent"/>
     <disable_collisions link1="body_link" link2="fr_wheel_link" reason="Adjacent"/>
-    <disable_collisions link1="body_link" link2="panther_ur5e_base_link_inertia" reason="Adjacent"/>
+    <disable_collisions link1="body_link" link2="panther_ur5e_base_link_inertia" reason="Never"/>
     <disable_collisions link1="body_link" link2="panther_ur5e_shoulder_link" reason="Never"/>
     <disable_collisions link1="body_link" link2="rl_wheel_link" reason="Adjacent"/>
     <disable_collisions link1="body_link" link2="rr_wheel_link" reason="Adjacent"/>
     <disable_collisions link1="body_link" link2="upper_rails_link" reason="Adjacent"/>
+    <disable_collisions link1="body_link" link2="ur_mounting_plate_link" reason="Never"/>
+    <disable_collisions link1="body_link" link2="zed2i_camera_center" reason="Adjacent"/>
+    <disable_collisions link1="external_antenna_link" link2="fl_wheel_link" reason="Never"/>
+    <disable_collisions link1="external_antenna_link" link2="fr_wheel_link" reason="Never"/>
+    <disable_collisions link1="external_antenna_link" link2="panther_ur5e_base_link_inertia" reason="Never"/>
+    <disable_collisions link1="external_antenna_link" link2="panther_ur5e_shoulder_link" reason="Never"/>
+    <disable_collisions link1="external_antenna_link" link2="rl_wheel_link" reason="Never"/>
+    <disable_collisions link1="external_antenna_link" link2="rr_wheel_link" reason="Never"/>
+    <disable_collisions link1="external_antenna_link" link2="upper_rails_link" reason="Adjacent"/>
+    <disable_collisions link1="external_antenna_link" link2="ur_mounting_plate_link" reason="Never"/>
+    <disable_collisions link1="external_antenna_link" link2="zed2i_camera_center" reason="Adjacent"/>
     <disable_collisions link1="fl_wheel_link" link2="fr_wheel_link" reason="Never"/>
     <disable_collisions link1="fl_wheel_link" link2="panther_ur5e_base_link_inertia" reason="Never"/>
     <disable_collisions link1="fl_wheel_link" link2="panther_ur5e_shoulder_link" reason="Never"/>
     <disable_collisions link1="fl_wheel_link" link2="rl_wheel_link" reason="Never"/>
     <disable_collisions link1="fl_wheel_link" link2="rr_wheel_link" reason="Never"/>
     <disable_collisions link1="fl_wheel_link" link2="upper_rails_link" reason="Never"/>
+    <disable_collisions link1="fl_wheel_link" link2="ur_mounting_plate_link" reason="Never"/>
+    <disable_collisions link1="fl_wheel_link" link2="zed2i_camera_center" reason="Never"/>
     <disable_collisions link1="fr_wheel_link" link2="panther_ur5e_base_link_inertia" reason="Never"/>
     <disable_collisions link1="fr_wheel_link" link2="panther_ur5e_shoulder_link" reason="Never"/>
     <disable_collisions link1="fr_wheel_link" link2="rl_wheel_link" reason="Never"/>
     <disable_collisions link1="fr_wheel_link" link2="rr_wheel_link" reason="Never"/>
     <disable_collisions link1="fr_wheel_link" link2="upper_rails_link" reason="Never"/>
+    <disable_collisions link1="fr_wheel_link" link2="ur_mounting_plate_link" reason="Never"/>
+    <disable_collisions link1="fr_wheel_link" link2="zed2i_camera_center" reason="Never"/>
     <disable_collisions link1="panther_ur5e_base_link_inertia" link2="panther_ur5e_shoulder_link" reason="Adjacent"/>
     <disable_collisions link1="panther_ur5e_base_link_inertia" link2="rl_wheel_link" reason="Never"/>
     <disable_collisions link1="panther_ur5e_base_link_inertia" link2="rr_wheel_link" reason="Never"/>
-    <disable_collisions link1="panther_ur5e_base_link_inertia" link2="upper_rails_link" reason="Adjacent"/>
+    <disable_collisions link1="panther_ur5e_base_link_inertia" link2="upper_rails_link" reason="Never"/>
+    <disable_collisions link1="panther_ur5e_base_link_inertia" link2="ur_mounting_plate_link" reason="Adjacent"/>
+    <disable_collisions link1="panther_ur5e_base_link_inertia" link2="zed2i_camera_center" reason="Never"/>
     <disable_collisions link1="panther_ur5e_forearm_link" link2="panther_ur5e_upper_arm_link" reason="Adjacent"/>
     <disable_collisions link1="panther_ur5e_forearm_link" link2="panther_ur5e_wrist_1_link" reason="Adjacent"/>
     <disable_collisions link1="panther_ur5e_forearm_link" link2="panther_ur5e_wrist_2_link" reason="Never"/>
@@ -79,6 +97,8 @@
     <disable_collisions link1="panther_ur5e_shoulder_link" link2="rl_wheel_link" reason="Never"/>
     <disable_collisions link1="panther_ur5e_shoulder_link" link2="rr_wheel_link" reason="Never"/>
     <disable_collisions link1="panther_ur5e_shoulder_link" link2="upper_rails_link" reason="Never"/>
+    <disable_collisions link1="panther_ur5e_shoulder_link" link2="ur_mounting_plate_link" reason="Never"/>
+    <disable_collisions link1="panther_ur5e_shoulder_link" link2="zed2i_camera_center" reason="Never"/>
     <disable_collisions link1="panther_ur5e_wrist_1_link" link2="panther_ur5e_wrist_2_link" reason="Adjacent"/>
     <disable_collisions link1="panther_ur5e_wrist_1_link" link2="panther_ur5e_wrist_3_link" reason="Never"/>
     <disable_collisions link1="panther_ur5e_wrist_1_link" link2="quick_changer_link" reason="Never"/>
@@ -121,17 +141,27 @@
     <disable_collisions link1="rg2_hand_link" link2="rg2_r_truss_arm_link" reason="Adjacent"/>
     <disable_collisions link1="rg2_l_finger_link" link2="rg2_l_moment_arm_link" reason="Adjacent"/>
     <disable_collisions link1="rg2_l_finger_link" link2="rg2_l_truss_arm_link" reason="Default"/>
+    <disable_collisions link1="rg2_l_finger_link" link2="rg2_r_finger_link" reason="Never"/>
     <disable_collisions link1="rg2_l_finger_link" link2="rg2_r_moment_arm_link" reason="Never"/>
     <disable_collisions link1="rg2_l_finger_link" link2="rg2_r_truss_arm_link" reason="Never"/>
-    <disable_collisions link1="rg2_l_moment_arm_link" link2="rg2_l_truss_arm_link" reason="Default"/>
+    <disable_collisions link1="rg2_l_moment_arm_link" link2="rg2_l_truss_arm_link" reason="Never"/>
     <disable_collisions link1="rg2_l_moment_arm_link" link2="rg2_r_finger_link" reason="Never"/>
-    <disable_collisions link1="rg2_l_moment_arm_link" link2="rg2_r_moment_arm_link" reason="Default"/>
+    <disable_collisions link1="rg2_l_moment_arm_link" link2="rg2_r_moment_arm_link" reason="Never"/>
+    <disable_collisions link1="rg2_l_moment_arm_link" link2="rg2_r_truss_arm_link" reason="Never"/>
     <disable_collisions link1="rg2_l_truss_arm_link" link2="rg2_r_finger_link" reason="Never"/>
+    <disable_collisions link1="rg2_l_truss_arm_link" link2="rg2_r_moment_arm_link" reason="Never"/>
     <disable_collisions link1="rg2_l_truss_arm_link" link2="rg2_r_truss_arm_link" reason="Never"/>
     <disable_collisions link1="rg2_r_finger_link" link2="rg2_r_moment_arm_link" reason="Adjacent"/>
     <disable_collisions link1="rg2_r_finger_link" link2="rg2_r_truss_arm_link" reason="Default"/>
-    <disable_collisions link1="rg2_r_moment_arm_link" link2="rg2_r_truss_arm_link" reason="Default"/>
+    <disable_collisions link1="rg2_r_moment_arm_link" link2="rg2_r_truss_arm_link" reason="Never"/>
     <disable_collisions link1="rl_wheel_link" link2="rr_wheel_link" reason="Never"/>
     <disable_collisions link1="rl_wheel_link" link2="upper_rails_link" reason="Never"/>
+    <disable_collisions link1="rl_wheel_link" link2="ur_mounting_plate_link" reason="Never"/>
+    <disable_collisions link1="rl_wheel_link" link2="zed2i_camera_center" reason="Never"/>
     <disable_collisions link1="rr_wheel_link" link2="upper_rails_link" reason="Never"/>
+    <disable_collisions link1="rr_wheel_link" link2="ur_mounting_plate_link" reason="Never"/>
+    <disable_collisions link1="rr_wheel_link" link2="zed2i_camera_center" reason="Never"/>
+    <disable_collisions link1="upper_rails_link" link2="ur_mounting_plate_link" reason="Adjacent"/>
+    <disable_collisions link1="upper_rails_link" link2="zed2i_camera_center" reason="Adjacent"/>
+    <disable_collisions link1="ur_mounting_plate_link" link2="zed2i_camera_center" reason="Never"/>
 </robot>

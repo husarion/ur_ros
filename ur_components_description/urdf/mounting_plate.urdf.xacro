@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <xacro:macro name="mounting_plate"
+    params="parent_link xyz rpy">
+
+    <link name="ur_mounting_plate_link">
+      <collision>
+        <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
+        <geometry>
+          <mesh filename="file://$(find ur_components_description)/meshes/ur_mounting_plate.stl" />
+        </geometry>
+      </collision>
+
+      <visual>
+        <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
+        <geometry>
+          <mesh filename="file://$(find ur_components_description)/meshes/ur_mounting_plate.dae" />
+        </geometry>
+      </visual>
+    </link>
+
+    <joint name="${parent_link}_to_ur_mounting_plate_link_joint" type="fixed">
+      <origin xyz="${xyz}" rpy="${rpy}" />
+      <parent link="${parent_link}" />
+      <child link="ur_mounting_plate_link" />
+    </joint>
+
+  </xacro:macro>
+</robot>

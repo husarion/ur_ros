@@ -7,22 +7,33 @@
 
   <!-- Robot -->
   <xacro:include filename="$(find panther_description)/urdf/panther_macro.urdf.xacro" ns="husarion" />
-  <xacro:include filename="$(find ur_description)/urdf/inc/ur3_macro.xacro" ns="universal_robot"/>
+  <xacro:include filename="$(find ur_description)/urdf/inc/ur3_macro.xacro" ns="universal_robot" />
+  <xacro:include filename="$(find ur_components_description)/urdf/mounting_plate.urdf.xacro" ns="mounting_plate" />
+  <xacro:include filename="$(find ur_components_description)/urdf/upper_rails.urdf.xacro" ns="rails" />
 
-  <xacro:husarion.panther_robot dual_bat="$(arg dual_bat)" wheel_config_path="$(arg wheel_config_path)" />
-  <xacro:universal_robot.ur3_robot prefix="panther_ur3_" />
+  <xacro:husarion.panther_robot 
+    dual_bat="$(arg dual_bat)" 
+    wheel_config_path="$(arg wheel_config_path)" 
+    use_ros_control="True" />
+  <xacro:rails.upper_rails 
+      parent_link="cover_link" 
+      xyz="0.0 0.0 -0.02" 
+      rpy="0.0 0.0 0.0" />
+  <xacro:mounting_plate.mounting_plate 
+    parent_link="upper_rails_link"
+    xyz="-0.095 0.0975 0.05"
+    rpy="0.0 0.0 0.0" />
 
-  <joint name="base_link_to_ur3_link_joint" type="fixed">
-    <origin xyz="-0.095 0.0975 0.375" rpy="0.0 0.0 ${pi/2}" />
-    <parent link="base_link" />
+  <joint name="ur_mounting_plate_to_ur3_link_joint" type="fixed">
+    <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 ${pi/2}" />
+    <parent link="ur_mounting_plate_link" />
     <child link="panther_ur3_base_link" />
   </joint>
 
+  <xacro:universal_robot.ur3_robot prefix="panther_ur3_" />
+
   <!-- Components -->
   <xacro:include filename="$(find panther_description)/urdf/components/external_antenna.urdf.xacro" ns="antena" />
-  <xacro:include filename="$(find ur_components_description)/urdf/upper_rails.urdf.xacro" ns="rails" />
-
-  <xacro:antena.external_antenna parent_link="base_link" xyz="0.18 0.15 0.377" rpy="0.0 0.0 ${pi}" />
-  <xacro:rails.upper_rails parent_link="base_link" xyz="0.0 0.0 0.334" rpy="0.0 ${-pi/2} 0.0" />
+  <xacro:antena.external_antenna parent_link="cover_link" xyz="0.18 0.15 0.02" rpy="0.0 0.0 ${pi}" />
 
 </robot>

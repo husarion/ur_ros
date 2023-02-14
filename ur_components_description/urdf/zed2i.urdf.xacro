@@ -64,7 +64,7 @@
     <joint name="zed2i_mag_joint" type="fixed">
       <parent link="zed2i_camera_center" />
       <child link="zed2i_mag_link" />
-      <origin xyz="0 0 0" rpy="0 0 0" />
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
     </joint>
 
     <link name="zed2i_baro_link" />

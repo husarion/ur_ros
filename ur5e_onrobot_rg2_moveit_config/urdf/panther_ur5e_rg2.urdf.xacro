@@ -49,11 +49,11 @@
 
   <xacro:zed.zed2i_camera 
     parent_link="cover_link" 
-    xyz="0.19 -0.1 0.05" 
+    xyz="0.21 -0.07 0.06" 
     rpy="0.0 0.0 0.0" />
   <xacro:antena.external_antenna 
     parent_link="cover_link" 
-    xyz="0.18 -0.15 0.0" 
+    xyz="0.18 -0.15 0.02" 
     rpy="0.0 0.0 ${pi}" />
 
 </robot>

@@ -39,7 +39,7 @@
 
   <xacro:velodyne.velodyne_puck 
     parent_link="cover_link" 
-    xyz="0.05 -0.13 0.15" 
+    xyz="0.05 -0.13 0.17" 
     rpy="0.0 0.0 0.0"
     use_gpu="$(arg use_gpu)" />
   <xacro:rs.sensor_d435i 
@@ -54,11 +54,11 @@
 
   <xacro:antena.external_antenna 
     parent_link="cover_link" 
-    xyz="0.18 0.15 0.0" 
+    xyz="0.18 0.15 0.02" 
     rpy="0.0 0.0 ${pi}" />
   <xacro:power_supply.power_supply 
     parent_link="cover_link" 
-    xyz="0.0 -0.13 0.0" 
+    xyz="0.0 -0.13 0.02" 
     rpy="0.0 0.0 0.0" />
 
 </robot>

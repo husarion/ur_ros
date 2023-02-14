@@ -34,6 +34,6 @@
 
   <!-- Components -->
   <xacro:include filename="$(find panther_description)/urdf/components/external_antenna.urdf.xacro" ns="antena" />
-  <xacro:antena.external_antenna parent_link="base_link" xyz="0.18 0.15 0.377" rpy="0.0 0.0 ${pi}" />
+  <xacro:antena.external_antenna parent_link="cover_link" xyz="0.18 0.15 0.02" rpy="0.0 0.0 ${pi}" />
 
 </robot>

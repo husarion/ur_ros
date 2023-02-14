@@ -54,7 +54,7 @@
 
     <link name="zed2i_right_camera_optical_frame" />
     <joint name="zed2i_right_camera_optical_joint" type="fixed">
-      <origin xyz="-0.01 0 0" rpy="-${pi/2} 0.0 -${pi/2}" />
+      <origin xyz="-0.01 0.0 0.0" rpy="-${pi/2} 0.0 -${pi/2}" />
       <parent link="zed2i_right_camera_frame" />
       <child link="zed2i_right_camera_optical_frame" />
     </joint>

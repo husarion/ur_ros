@@ -7,7 +7,7 @@
 
   <!-- Robot -->
   <xacro:include filename="$(find panther_description)/urdf/panther_macro.urdf.xacro" ns="husarion" />
-  <xacro:include filename="$(find ur_description)/urdf/inc/ur5e_macro.xacro" ns="universal_robot"/>
+  <xacro:include filename="$(find ur_description)/urdf/inc/ur5e_macro.xacro" ns="universal_robot" />
   <xacro:include filename="$(find ur_components_description)/urdf/mounting_plate.urdf.xacro" ns="mounting_plate" />
   <xacro:include filename="$(find onrobot_rg2_description)/urdf/onrobot_rg2.urdf.xacro" ns="gripper" />
   <xacro:include filename="$(find onrobot_rg2_description)/urdf/onrobot_quick_changer.urdf.xacro" ns="changer" />

@@ -1,0 +1,25 @@
+<launch>
+  <arg name="robot_ip" default="10.15.20.4" />
+  <arg name="tf_prefix" default="panther_ur3e_" />
+  <arg name="kinematics_config" default="$(find ur_bringup)/config/ur3e_calibration.yaml" />
+  <arg name="headless_mode" default="true" />
+  <arg name="use_rviz" default="false" />
+  <arg name="rviz_config" default="$(find ur_bringup)/config/rviz_config.rviz" />
+  
+  
+  <include file="$(find ur_robot_driver)/launch/ur3e_bringup.launch">
+    <arg name="robot_ip" value="$(arg robot_ip)" />
+    <arg name="tf_prefix" value="$(arg tf_prefix)" />
+    <arg name="controller_config_file" value="$(find ur_bringup)/config/ur3e_controllers.yaml" />
+    <arg name="robot_description_file" value="$(find ur3e_moveit_config)/launch/load_ur3e.launch" />
+    <arg name="kinematics_config" value="$(arg kinematics_config)" />
+  </include>
+
+  <include file="$(find ur3e_moveit_config)/launch/move_group.launch" />
+  
+  <node name="ur_manager_node" pkg="ur_bringup" type="ur_manager_node.py" output="screen" />
+  
+  <node if="$(arg use_rviz)" name="rviz" pkg="rviz" type="rviz" respawn="false" output="screen" args="-d $(arg rviz_config)" />
+
+</launch>
+  

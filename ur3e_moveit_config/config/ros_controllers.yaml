@@ -9,12 +9,12 @@ generic_hw_control_loop:
 # Settings for ros_control hardware interface
 hardware_interface:
   joints:
-    - panther_ur3_shoulder_pan_joint
-    - panther_ur3_shoulder_lift_joint
-    - panther_ur3_elbow_joint
-    - panther_ur3_wrist_1_joint
-    - panther_ur3_wrist_2_joint
-    - panther_ur3_wrist_3_joint
+    - panther_ur3e_shoulder_pan_joint
+    - panther_ur3e_shoulder_lift_joint
+    - panther_ur3e_elbow_joint
+    - panther_ur3e_wrist_1_joint
+    - panther_ur3e_wrist_2_joint
+    - panther_ur3e_wrist_3_joint
     - fl_wheel_joint
     - fr_wheel_joint
     - rl_wheel_joint
@@ -31,9 +31,9 @@ controller_list:
     default: True
     type: FollowJointTrajectory
     joints:
-      - panther_ur3_elbow_joint
-      - panther_ur3_shoulder_lift_joint
-      - panther_ur3_shoulder_pan_joint
-      - panther_ur3_wrist_1_joint
-      - panther_ur3_wrist_2_joint
-      - panther_ur3_wrist_3_joint
+      - panther_ur3e_elbow_joint
+      - panther_ur3e_shoulder_lift_joint
+      - panther_ur3e_shoulder_pan_joint
+      - panther_ur3e_wrist_1_joint
+      - panther_ur3e_wrist_2_joint
+      - panther_ur3e_wrist_3_joint
